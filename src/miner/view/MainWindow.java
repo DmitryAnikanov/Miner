@@ -47,7 +47,6 @@ public class MainWindow {
 		createControls(Application.INSTANCE.getGameSettings());
 		ContextInjectionFactory.inject(Application.INSTANCE, context);
 		addCloseListener(parent);
-		parent.pack();
 	}
 	
 	
