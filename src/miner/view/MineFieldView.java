@@ -1,5 +1,6 @@
 package miner.view;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
