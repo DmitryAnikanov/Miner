@@ -47,6 +47,7 @@ public class MainWindow {
 		createControls(Application.INSTANCE.getGameSettings());
 		ContextInjectionFactory.inject(Application.INSTANCE, context);
 		addCloseListener(parent);
+		gui.centerShell(parent.getShell());
 	}
 	
 	
@@ -96,7 +97,7 @@ public class MainWindow {
 		setFlaggedCellsRemainCountLabelValue(0);
 		createGameBoard(gameSettings);
 		setActualShellSize();
-		gui.centerShell(parent.getShell());
+		//gui.centerShell(parent.getShell());
 	}
 	
 	private void addCloseListener(Composite parent) {
@@ -126,11 +127,11 @@ public class MainWindow {
 		int frameWidth = shell_size.x - client_area.width;
 		int frameHeight = shell_size.y - client_area.height;
 		
-		int counterPanelHeight = counterPanel.getSize().y;
+		int counterPanelHeight = counterPanel.getSize().y;		
 		parent.getShell().pack();
 		shell.setSize(view.getSize().x + frameWidth, 
 				view.getSize().y + frameHeight + counterPanelHeight);
-
+		System.out.println(view.getSize().x + frameWidth + "  " + view.getSize().y + frameHeight + counterPanelHeight);
 	}
 	
 	/*@Focus
