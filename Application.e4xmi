@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_c3AF0MjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.application" bindingContexts="_c3AF2cjYEeSyMNYR5xypkQ">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_c3AF0cjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.window.main" label="Miner" iconURI="platform:/plugin/Miner/icons/mainWindow.gif" width="500" height="400">
+    <persistedState key="styleOverride" value="96"/>
+    <children xsi:type="basic:Part" xmi:id="_i5hGkOacEem5Y9HPm-BZww" elementId="miner.part.miner" contributionURI="bundleclass://Miner/miner.view.MainWindow" label=""/>
+    <properties/>
+    <mainMenu xmi:id="_enkggOatEem5Y9HPm-BZww" elementId="miner.menu.0">
+      <children xsi:type="menu:Menu" xmi:id="_r0AsoOatEem5Y9HPm-BZww" elementId="miner.menu." label="%MenuGame">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_-ubvQOatEem5Y9HPm-BZww" elementId="miner.handledmenuitem.f2" label="%MenuGame_new_game" command="_T1Ex0OauEem5Y9HPm-BZww"/>
+        <children xsi:type="menu:MenuSeparator" xmi:id="_Cbz_8OauEem5Y9HPm-BZww" elementId="miner.menuseparator.0"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_C--XYOauEem5Y9HPm-BZww" elementId="miner.handledmenuitem." label="%MenuGame_newbie" command="_V3UWYOauEem5Y9HPm-BZww"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_FFibQOauEem5Y9HPm-BZww" elementId="miner.handledmenuitem." label="%MenuGame_amateur" command="_X_gx8OauEem5Y9HPm-BZww"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_Hm6y4OauEem5Y9HPm-BZww" elementId="miner.handledmenuitem." label="%MenuGame_professional" command="_Z1YHYOauEem5Y9HPm-BZww"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_Jw5XIOauEem5Y9HPm-BZww" elementId="miner.handledmenuitem." label="%MenuGame_special" command="_bLgM0OauEem5Y9HPm-BZww"/>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_xADrYPDMEemmIYtGQK0itw" elementId="miner.menu." label="%MenuInfo">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_yptJwPDMEemmIYtGQK0itw" elementId="miner.handledmenuitem." label="%MenuInfo_about" command="_09-ScPDMEemmIYtGQK0itw"/>
+      </children>
+    </mainMenu>
+  </children>
+  <handlers xmi:id="_uEu8oOauEem5Y9HPm-BZww" elementId="miner.handler.0" contributionURI="bundleclass://Miner/miner.view.handlers.NewGameStartingHandler" command="_T1Ex0OauEem5Y9HPm-BZww"/>
+  <handlers xmi:id="_vQ4msOauEem5Y9HPm-BZww" elementId="miner.handler.1" contributionURI="bundleclass://Miner/miner.view.handlers.BeginnerSettingsHandler" command="_V3UWYOauEem5Y9HPm-BZww"/>
+  <handlers xmi:id="_vlJmgOauEem5Y9HPm-BZww" elementId="miner.handler.2" contributionURI="bundleclass://Miner/miner.view.handlers.AmatureSettingsHandler" command="_X_gx8OauEem5Y9HPm-BZww"/>
+  <handlers xmi:id="_v650EOauEem5Y9HPm-BZww" elementId="miner.handler.3" contributionURI="bundleclass://Miner/miner.view.handlers.ProfessionalSettingsHandler" command="_Z1YHYOauEem5Y9HPm-BZww"/>
+  <handlers xmi:id="_w5yeMOauEem5Y9HPm-BZww" elementId="miner.handler.4" contributionURI="bundleclass://Miner/miner.view.handlers.SpecialSettingDialogHandler" command="_bLgM0OauEem5Y9HPm-BZww"/>
+  <handlers xmi:id="_22FDkPDMEemmIYtGQK0itw" elementId="miner.handler.5" contributionURI="bundleclass://Miner/miner.view.handlers.AboutHandler" command="_09-ScPDMEemmIYtGQK0itw"/>
+  <bindingTables xmi:id="_EGsQYPBREem3JPeo2arM3w" elementId="miner.bindingtable.0" bindingContext="_c3AF2sjYEeSyMNYR5xypkQ">
+    <bindings xmi:id="_EbWRwPBREem3JPeo2arM3w" elementId="miner.keybinding.0" keySequence="M1+N" command="_T1Ex0OauEem5Y9HPm-BZww"/>
+  </bindingTables>
+  <rootContext xmi:id="_c3AF2cjYEeSyMNYR5xypkQ" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
+    <children xmi:id="_c3AF2sjYEeSyMNYR5xypkQ" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
+    <children xmi:id="_c3AF28jYEeSyMNYR5xypkQ" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
+  </rootContext>
+  <commands xmi:id="_T1Ex0OauEem5Y9HPm-BZww" elementId="miner.command.newgame" commandName="newGame"/>
+  <commands xmi:id="_V3UWYOauEem5Y9HPm-BZww" elementId="miner.command.newbie" commandName="newbie"/>
+  <commands xmi:id="_X_gx8OauEem5Y9HPm-BZww" elementId="miner.command.amateur" commandName="amateur"/>
+  <commands xmi:id="_Z1YHYOauEem5Y9HPm-BZww" elementId="miner.command.professional" commandName="professional"/>
+  <commands xmi:id="_bLgM0OauEem5Y9HPm-BZww" elementId="miner.command.special" commandName="special"/>
+  <commands xmi:id="_09-ScPDMEemmIYtGQK0itw" elementId="miner.command.about" commandName="about"/>
+  <addons xmi:id="_c3AF0sjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_c3AF08jYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_c3AF1MjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
+  <addons xmi:id="_c3AF1cjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_c3AF1sjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.workbench.handler.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
+  <addons xmi:id="_c3AF18jYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_c3AF2MjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+</application:Application>
