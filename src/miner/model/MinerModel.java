@@ -18,9 +18,8 @@ public class MinerModel {
 	private boolean isFirstStep = true;
 	
 	private MinerData data;
-
 	private MineFactory mineFactory = new MineFactory();
-	
+	private ArrayList<MinerModelCell> activeCells = new ArrayList<MinerModelCell>();
 	public MinerModel(MinerData data) throws DataProcessingException {
 		this.data = data;
 	}
@@ -115,9 +114,11 @@ public class MinerModel {
 		return cells;
 	}
 	
-	public void iterateCellType(int x, int y) {
+	public void iterateCellType(int x, int y) throws DataProcessingException {
 		isFirstStep = false;
 		data.getMineField()[x][y].iterateType();
+		activeCells.remove(getCell(x, y));
+		activeCells.add(getCell(x, y));
 	}
 
 	public void init(int currentCol, int currentRow, Class mineClass) throws DataProcessingException {
@@ -130,10 +131,12 @@ public class MinerModel {
 	public void openCell(int x, int y) throws DataProcessingException {
 		isFirstStep = false;
 		activeCell = getCell(x, y);
+		activeCells.add(activeCell);
 		if(!activeCell.isFlagged() && !activeCell.isQuestioned()) {
 			activeCell.open();
 			if (activeCell.isMined() && activeCell.getMine().explode()) {
 				isGameOver = true;
+				activeCells.clear();
 				return;
 			}
 			tryToOpenEmptyCells();
@@ -167,9 +170,10 @@ public class MinerModel {
 					hiddenCellsCount++;
 			}
 		}
-		if (hiddenCellsCount.equals(data.getGameSettinngs().getMinesCount()))
+		if (hiddenCellsCount.equals(data.getGameSettinngs().getMinesCount())) {
 			isWin = true;
-		else isWin = false;
+			activeCells.clear();
+		} else isWin = false;
 		return isWin;
 	}
 	
@@ -192,5 +196,10 @@ public class MinerModel {
 	public void isFirstStep(boolean isFirstStep) {
 		this.isFirstStep = isFirstStep;
 	}
+	
+	public ArrayList<MinerModelCell> getActiveCells() {
+		return activeCells;
+	}
+	
 	
 }

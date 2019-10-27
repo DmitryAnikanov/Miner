@@ -21,7 +21,7 @@ public class MineFieldCellWidget extends ImageButtonWidget {
 	private final String cellQuestionedUrl = "images/cellQuestioned.bmp";
 	private final String cellMinedUrl  = "images/cellMined.bmp";
 	private final String cellRedAndMinedUrl = "images/cellRedAndMined.bmp";
-	 
+	
 	private int x;
 	private int y;
 	
@@ -46,7 +46,7 @@ public class MineFieldCellWidget extends ImageButtonWidget {
 	    cellMined.dispose();
 	    cellRedAndMined.dispose();
 	}
-	//@Override
+    @Override
 	protected void loadImages() {
     	try {
     		btnUnpushed = gui.loadImage(cellUnpushedUrl);
@@ -60,48 +60,48 @@ public class MineFieldCellWidget extends ImageButtonWidget {
     	}
     }
 	
-	 public void drawFlagged() {
-	    	redraw(cellFlagged);
-	    }
-	    
-	    public void drawQuestioned() {
-	    	redraw(cellQuestioned);
-	    }
-	    
-	    public void drawMined() {
-	    	redraw(cellMined);
-	    }
-	    
-	    public void drawUnpushed() {
-	    	
-	    	redraw(btnUnpushed);
-	    }
-	    
-	    public void drawPushed() {
-	    	redraw(btnPushed);
-	    }
-	    
-	    public void drawEmpty() {
-	    	redraw(btnPushed);
-	    }
-	    
-	    public void drawRedAndMined() {
-	    	redraw(cellRedAndMined);
-	    }
-	    
-	    public void drawAroundMinesCount(int count) throws DataLoadException {
-	    	redraw(btnPushed, count);
-	    }
-	    
-	    private void redraw (Image image, int count) throws DataLoadException {
-	    	redraw(gui.createGCWithTextOnImage(cellPushedUrl, count));
-	    }
-	    
-	    public int getX() {
-	    	return x;
-	    }
-	    
-	    public int getY() {
-	    	return y;
-	    }
+	public void drawFlagged() {
+		 redraw(cellFlagged);
+    }
+    
+    public void drawQuestioned() {
+    	redraw(cellQuestioned);
+    }
+    
+    public void drawMined() {
+    	redraw(cellMined);
+    }
+    
+    public void drawUnpushed() {
+    	
+    	redraw(btnUnpushed);
+    }
+    
+    public void drawPushed() {
+    	redraw(btnPushed);
+    }
+    
+    public void drawEmpty() {
+    	redraw(btnPushed);
+    }
+    
+    public void drawRedAndMined() {
+    	redraw(cellRedAndMined);
+    }
+    
+    public void drawAroundMinesCount(int count) throws DataLoadException {
+    	redraw(btnPushed, count);
+    }
+    
+    private void redraw (Image image, int count) throws DataLoadException {
+    	redraw(gui.createGCWithTextOnImage(cellPushedUrl, count));
+    }
+    
+    public int getX() {
+    	return x;
+    }
+    
+    public int getY() {
+    	return y;
+    }
 }

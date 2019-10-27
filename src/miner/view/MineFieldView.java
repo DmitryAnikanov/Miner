@@ -149,7 +149,7 @@ public class MineFieldView {
 	}
 
 	public void drawQuestioned(int col, int row) throws MineFieldWidgetCellException {
-		mineFieldWidget.getCell(col, row).drawQuestioned();		
+		mineFieldWidget.getCell(col, row).drawQuestioned();
 	}
 	
 	public void drawMined(int col, int row) throws MineFieldWidgetCellException {
@@ -157,10 +157,11 @@ public class MineFieldView {
 	}
 	
 	public void drawRedAndMined(int col, int row) throws MineFieldWidgetCellException {
-		mineFieldWidget.getCell(col, row).drawRedAndMined();	
+		mineFieldWidget.getCell(col, row).drawRedAndMined();
 	}
 
-	public void drawPushed(int col, int row) throws MineFieldWidgetCellException {
-		mineFieldWidget.getCell(col, row).drawPushed();		
+	public void drawPushed(int col, int row) throws MineFieldWidgetCellException {		
+		mineFieldWidget.getCell(col, row).drawPushed();
 	}
+	
 }

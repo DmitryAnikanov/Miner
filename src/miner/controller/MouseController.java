@@ -13,7 +13,7 @@ public class MouseController extends Controller {
 	private MineFieldView view;
 	private boolean gameInProcess = true;
 	private int flaggedCellsCount;
-	private Class<SimpleMine> mineClass;
+	private Class<SimpleMine> mineClass;	
 	
 	public MouseController (MinerModel model) {
 		name = "Mouse controller";
@@ -63,10 +63,8 @@ public class MouseController extends Controller {
 	
 	private void synchronizeModelAndView() throws MineFieldWidgetCellException, DataProcessingException, DataLoadException {
 		flaggedCellsCount = 0;
-		for (int col = 0; col < model.getData().getColsCount(); col++) {
-			for (int row = 0; row < model.getData().getRowsCount(); row++) {
-				displayModelOnControlWidget(col, row);						
-			}
+		for (MinerModelCell modelCell : model.getActiveCells()) {
+			displayModelOnControlWidget(modelCell.getX(), modelCell.getY());			
 		}
 		view.sendFlaggedCellsCountEvent(flaggedCellsCount);
 	}
@@ -74,10 +72,11 @@ public class MouseController extends Controller {
 	private void displayModelOnControlWidget(int col, int row) throws MineFieldWidgetCellException, DataProcessingException, DataLoadException {
 		MinerModelCell modelCell = model.getCell(col, row);
 		if (modelCell.isOpened() && model.isGameOver()) {
-			view.drawRedAndMined(col, row);						
+			view.drawRedAndMined(col, row);
 		} else { 
-			if (modelCell.isClosed()) 
+			if (modelCell.isClosed()) {
 				view.drawUnpushed(col, row);
+			}
 			else if (modelCell.isOpened()) {
 				if (modelCell.hasMinesAround())
 					view.drawAroundMinesCount(col, row, modelCell.getMinesAroundCount());

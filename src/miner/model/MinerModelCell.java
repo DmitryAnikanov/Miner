@@ -103,4 +103,5 @@ public class MinerModelCell {
 				return true;
 		else return false;
 	}
+	
 }
