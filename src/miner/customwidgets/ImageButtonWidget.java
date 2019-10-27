@@ -116,6 +116,10 @@ public  class ImageButtonWidget extends Canvas {
     public void drawUnpushed() {
     	redraw(btnUnpushed);
     }
+    
+    public void drawPushed() {
+    	redraw(btnPushed);
+    }
   
     protected void redraw (Image image) {
 	    this.addPaintListener(new PaintListener() {
