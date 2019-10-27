@@ -13,14 +13,19 @@ public  class ImageButtonWidget extends Canvas {
 	private int mouse = 0;   
 	protected Image btnUnpushed;
 	protected Image btnPushed;
-	protected Image btnGameIsOver;
-    private final String btnUnpushedURL = "images/buttonSmileOk_unpushed.bmp";
-    private final String btnPushedURL = "images/buttonSmileOk_pushed.bmp";
-    private final String btnGameIsOverURL = "images/buttonGameIsOver.bmp";
+	private String btnUnpushedURL;
+    private String btnPushedURL;
     private Gui gui = new Gui();
     
-    public ImageButtonWidget(Composite parent, int style) {
+    protected ImageButtonWidget(Composite parent, int style) {
         super(parent, style);
+        initListeners();		    
+    }
+    
+    public ImageButtonWidget(Composite parent, int style, String btnUnpushedURL, String btnPushedURL) {
+        super(parent, style);
+        this.btnUnpushedURL = btnUnpushedURL;
+        this.btnPushedURL = btnPushedURL;
         loadImages();
         initListeners();		    
     }
@@ -28,8 +33,7 @@ public  class ImageButtonWidget extends Canvas {
     protected void loadImages() {
     	try {
     		btnUnpushed = gui.loadImage(btnUnpushedURL);
-    		btnPushed = gui.loadImage(btnPushedURL);
-    		btnGameIsOver = gui.loadImage(btnGameIsOverURL);
+    		btnPushed = gui.loadImage(btnPushedURL);    		
     	} catch (Exception e) {
     		
     	}
@@ -46,7 +50,6 @@ public  class ImageButtonWidget extends Canvas {
     protected void widgetDisposed(Event event) {
     	btnUnpushed.dispose();
     	btnPushed.dispose();
-    	btnGameIsOver.dispose();
     }
      
     protected PaintListener createPaintListener() {
@@ -54,13 +57,13 @@ public  class ImageButtonWidget extends Canvas {
     		public void paintControl(PaintEvent e) {
     			switch (mouse) {
         			case Gui.MOUSE_DEFAULT:
-        				paintUnpushed(e);        					 
+        				paintUnpushed(e);        				
         				break;
         			case Gui.MOUSE_LEFT:
-        				paintPushed(e);	        				
+        				paintPushed(e);        			
         				break;
         			case Gui.MOUSE_RIGHT_MASKED:        				
-        				paintPushed(e);
+        				paintPushed(e);        			
         				break;
         			case Gui.MOUSE_MIDDLE:
         				paintPushed(e);        				
@@ -101,18 +104,19 @@ public  class ImageButtonWidget extends Canvas {
     protected void paintUnpushed(PaintEvent event) {
     	drawImage(event, btnUnpushed);	    		    	
     }
+    
     protected void paintPushed(PaintEvent event) {
     	drawImage(event, btnPushed);	    
     }
     
-    public void drawGameIsOver() {
-    	redraw(btnGameIsOver);
+    public void draw(Image image) {
+    	redraw(image);
     }
     
-    public void drawDefault() {
+    public void drawUnpushed() {
     	redraw(btnUnpushed);
     }
-    
+  
     protected void redraw (Image image) {
 	    this.addPaintListener(new PaintListener() {
             public void paintControl(PaintEvent e) {

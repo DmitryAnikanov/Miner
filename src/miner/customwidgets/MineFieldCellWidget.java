@@ -46,7 +46,7 @@ public class MineFieldCellWidget extends ImageButtonWidget {
 	    cellMined.dispose();
 	    cellRedAndMined.dispose();
 	}
-	@Override
+	//@Override
 	protected void loadImages() {
     	try {
     		btnUnpushed = gui.loadImage(cellUnpushedUrl);

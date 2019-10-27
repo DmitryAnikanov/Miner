@@ -6,7 +6,6 @@ import javax.inject.Inject;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
-import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
@@ -21,6 +20,7 @@ import org.eclipse.swt.widgets.Shell;
 
 import miner.Application;
 import miner.customwidgets.ImageButtonWidget;
+import miner.exceptions.DataLoadException;
 import miner.exceptions.DataProcessingException;
 import miner.model.GameSettings;
 import miner.view.gui.Gui;
@@ -38,7 +38,9 @@ public class MainWindow {
 	private Label timerLabelValue;
 	private Gui gui = new Gui();
 	private Font font;
-
+	private final String btnUnpushedURL = "images/buttonSmileOk_unpushed.bmp";
+	private final String btnPushedURL = "images/buttonSmileOk_pushed.bmp";
+	private final String btnGameIsOverURL = "images/buttonGameIsOver.bmp";
 	
 	@PostConstruct
 	public void createComposite(final Composite parent) throws DataProcessingException {
@@ -74,7 +76,7 @@ public class MainWindow {
 		flaggedCellsCountLabel.setText("000");
 		flaggedCellsCountLabel.pack();
 		
-		gameStartButton = new ImageButtonWidget (counterPanel, SWT.NONE);
+		gameStartButton = new ImageButtonWidget (counterPanel, SWT.NONE, btnUnpushedURL, btnPushedURL);
 		gameStartButton.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1));
 		gameStartButton.addListener(SWT.MouseDown, e-> {
 			try {
@@ -141,8 +143,8 @@ public class MainWindow {
 		createViews(gameSettings);
 	}
 	
-	private void setTimerLabelAndStartButtonToDefaultState() {
-		gameStartButton.drawDefault();
+	private void setTimerLabelAndStartButtonToDefaultState() {		
+		gameStartButton.drawUnpushed();
 		setIntToTextLabel(timerLabelValue, 0);
 	}
 	
@@ -170,8 +172,8 @@ public class MainWindow {
 	}
 	
 	@Inject @Optional
-    public void handleGameOver(@UIEventTopic(GuiEvents.GAME_OVER) Object View) throws DataProcessingException {		
-		gameStartButton.drawGameIsOver();
+    public void handleGameOver(@UIEventTopic(GuiEvents.GAME_OVER) Object View) throws DataProcessingException, DataLoadException {		
+		gameStartButton.draw(gui.loadImage(btnGameIsOverURL));
 	}
 	
 	private void setFlaggedCellsRemainCountLabelValue(int flaggedCellsCount) {
