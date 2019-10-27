@@ -1,6 +1,5 @@
 package miner.controller;
 
-import miner.definitions.ControllerExchangeInterface;
 import miner.model.MinerModel;
 import miner.view.MineFieldView;
 

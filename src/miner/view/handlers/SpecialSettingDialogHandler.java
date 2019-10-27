@@ -12,6 +12,7 @@ import miner.view.dialogs.SpecialSettingsDialog;
 public class SpecialSettingDialogHandler {
 
 	@Inject IEclipseContext context;
+	
 	@Execute
 	public void execute(Shell shell) {
 		SpecialSettingsDialog dialog = new SpecialSettingsDialog();

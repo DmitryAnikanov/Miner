@@ -170,8 +170,6 @@ public class MinerModel {
 		if (hiddenCellsCount.equals(data.getGameSettinngs().getMinesCount()))
 			isWin = true;
 		else isWin = false;
-		/*if (isGameOver)
-			isWin = false;*/
 		return isWin;
 	}
 	

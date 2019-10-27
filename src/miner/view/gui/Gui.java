@@ -25,13 +25,7 @@ public class Gui {
 	public static final int MOUSE_RIGHT_MASKED = 33;
 	public static final int MOUSE_RIGHT = 3;
 	public static final int MOUSE_MIDDLE = 2;
-	
-	//public static final Gui INSTANCE = new Gui(); 
-	
-	/*public Gui() {
-		
-	}*/
-	
+
 	public  void centerShell(Shell shell) {
 		try {			
 			Monitor primary = Display.getDefault().getPrimaryMonitor();
@@ -148,6 +142,5 @@ public class Gui {
 	public Color getOriginalMineSweeperRedColor() {
 		return new Color(Display.getDefault(), 255, 0, 0);
 	}
-	
 	
 }

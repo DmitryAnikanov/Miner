@@ -38,18 +38,22 @@ public class MainWindow {
 	private Label timerLabelValue;
 	private Gui gui = new Gui();
 	private Font font;
+
 	
 	@PostConstruct
 	public void createComposite(final Composite parent) throws DataProcessingException {
 		this.parent = parent;
-		parent.setLayout(gui.getGridLayout(1, false));
+		initComposite();
 		createCountersPanel();
-		createControls(Application.INSTANCE.getGameSettings());
-		ContextInjectionFactory.inject(Application.INSTANCE, context);
+		createViews(Application.INSTANCE.getGameSettings());
 		addCloseListener(parent);
 		gui.centerShell(parent.getShell());
 	}
 	
+	private void initComposite() {
+		parent.setLayout(gui.getGridLayout(1, false));
+		ContextInjectionFactory.inject(Application.INSTANCE, context);
+	}
 	
 	private void createCountersPanel() {
 		counterPanel = new  Composite(parent, SWT.NONE);
@@ -59,7 +63,6 @@ public class MainWindow {
 		
 		GridData gdata = new GridData(SWT.FILL, SWT.FILL, true, true, 3, 1);
 		gdata.minimumHeight = 40;
-
 		counterPanel.setLayoutData(gdata);
 		
 		flaggedCellsCountLabel = new Label(counterPanel, SWT.NONE);
@@ -75,7 +78,7 @@ public class MainWindow {
 		gameStartButton.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1));
 		gameStartButton.addListener(SWT.MouseDown, e-> {
 			try {
-				createControls(Application.INSTANCE.getGameSettings());
+				createViews(Application.INSTANCE.getGameSettings());
 			} catch (DataProcessingException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -92,12 +95,11 @@ public class MainWindow {
 		counterPanel.pack();
 	}
 
-	private void createControls(GameSettings gameSettings) throws DataProcessingException {
+	private void createViews(GameSettings gameSettings) throws DataProcessingException {
 		setTimerLabelAndStartButtonToDefaultState();
 		setFlaggedCellsRemainCountLabelValue(0);
 		createGameBoard(gameSettings);
 		setActualShellSize();
-		//gui.centerShell(parent.getShell());
 	}
 	
 	private void addCloseListener(Composite parent) {
@@ -131,17 +133,12 @@ public class MainWindow {
 		parent.getShell().pack();
 		shell.setSize(view.getSize().x + frameWidth, 
 				view.getSize().y + frameHeight + counterPanelHeight);
-		System.out.println(view.getSize().x + frameWidth + "  " + view.getSize().y + frameHeight + counterPanelHeight);
 	}
 	
-	/*@Focus
-    public void onFocus() {
-		setActualShellSize();
-    }*/
 	
 	@Inject @Optional
     public void handleNewGameStarting(@UIEventTopic(GuiEvents.NEW_GAME_STARTING) GameSettings gameSettings) throws DataProcessingException {
-		createControls(gameSettings);
+		createViews(gameSettings);
 	}
 	
 	private void setTimerLabelAndStartButtonToDefaultState() {
@@ -151,7 +148,7 @@ public class MainWindow {
 	
 	@Inject @Optional
     public void handleGameSettingsChanging(@UIEventTopic(GuiEvents.SETTINGS_CHANGED) GameSettings gameSettings) throws DataProcessingException {
-		createControls(gameSettings);
+		createViews(gameSettings);
 	}
 	
 	@Inject @Optional
@@ -178,13 +175,16 @@ public class MainWindow {
 	}
 	
 	private void setFlaggedCellsRemainCountLabelValue(int flaggedCellsCount) {
-		
 		setIntToTextLabel(flaggedCellsCountLabel, 
 				Application.INSTANCE.getGameSettings().getMinesCount() - flaggedCellsCount);
 	}
 	
 	private void setIntToTextLabel(Label label, int value) {
-		label.setText(String.valueOf(value));
+		try {
+			label.setText(String.valueOf(value));
+		} catch (Exception e) {
+			label.setText("");
+		}
 		label.pack();
 		label.redraw();
 	}

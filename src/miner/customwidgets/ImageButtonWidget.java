@@ -18,12 +18,13 @@ public  class ImageButtonWidget extends Canvas {
     private final String btnPushedURL = "images/buttonSmileOk_pushed.bmp";
     private final String btnGameIsOverURL = "images/buttonGameIsOver.bmp";
     private Gui gui = new Gui();
+    
     public ImageButtonWidget(Composite parent, int style) {
         super(parent, style);
         loadImages();
         initListeners();		    
     }
-    
+ 
     protected void loadImages() {
     	try {
     		btnUnpushed = gui.loadImage(btnUnpushedURL);

@@ -9,7 +9,6 @@ public class MineFactory {
 	}
 	
 	public Mine createMine(Class mineClass) {
-		
         if (mineClass.equals(SimpleMine.class) ) {
         	mineCreator = new SimpleMineCreator();
         } 

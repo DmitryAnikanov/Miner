@@ -1,6 +1,5 @@
 package miner.view;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
@@ -23,7 +22,6 @@ import miner.exceptions.MineFieldWidgetCellException;
 import miner.model.GameSettings;
 import miner.model.MinerData;
 import miner.model.MinerModel;
-
 import miner.view.gui.Gui;
 import miner.view.gui.GuiEvents;
 import miner.view.gui.TimerThread;
